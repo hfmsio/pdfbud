@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pdfbud</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="noDoc">
+  <div id="chrome">
+  <div class="bar" role="toolbar" aria-label="Main">
+    <button id="side" class="ghost on" aria-pressed="true" title="Show or hide the page strip"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg><span class="lbl">Pages</span></button>
+    <button id="open" title="Open a PDF (⌘O)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Open <kbd>⌘O</kbd></button>
+    <button id="close" class="ghost" title="Close this file and go back to the start (⌘W)" disabled><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span class="lbl">Close</span></button>
+    <span class="div"></span>
+    <div class="grp">
+      <button id="first" class="ghost nav" aria-label="First page" title="First page (Home)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14"/><path d="M17 6l-6 6 6 6"/></svg></button>
+      <button id="prev" class="ghost nav" aria-label="Previous page" title="Previous page (←)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <input id="pg" class="pgin" value="1" aria-label="Page number"><span class="of" id="of">of 1</span>
+      <button id="next" class="ghost nav" aria-label="Next page" title="Next page (→)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+      <button id="last" class="ghost nav" aria-label="Last page" title="Last page (End)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 5v14"/><path d="M7 6l6 6-6 6"/></svg></button>
+    </div>
+    <span class="div"></span>
+    <div class="grp">
+      <button id="zout" class="ghost nav" aria-label="Zoom out" title="Zoom out (⌘−)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <button id="zfit" class="ghost" aria-label="Fit to width" title="Fit to width (⌘0)">100%</button>
+      <button id="zin" class="ghost nav" aria-label="Zoom in" title="Zoom in (⌘+)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+      <button id="fs" class="ghost nav" aria-label="Full screen" title="Full screen (⌃⌘F)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+    <span class="div"></span>
+    <div class="seg" role="group" aria-label="Mode">
+      <button id="mView" aria-pressed="true" title="View: read and search (V)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>View</button>
+      <button id="mHide" aria-pressed="false" title="Redact: black out text (R)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 16h5"/><rect x="7" y="11" width="10" height="3" fill="currentColor" stroke="none"/></svg>Redact</button>
+      <button id="mEdit" aria-pressed="false" title="Edit text: change a line (E)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>Edit text</button>
+      <button id="mFill" aria-pressed="false" title="Fill forms (F)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 12l3 3 5-6"/></svg>Fill forms</button>
+    </div>
+    <div class="right">
+      <button id="undo" class="ghost" title="Undo (⌘Z)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg><span class="lbl">Undo</span> <kbd>⌘Z</kbd></button>
+      <button id="clear" class="ghost" title="Remove your changes on this page. The file is never touched, and Undo brings them back."><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg><span class="lbl">Clear changes</span></button>
+      <button id="save" class="primary" title="Save as a new file, you choose the name and folder (⌘S)"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5"/><path d="M4 19h16"/></svg>Save as… <kbd id="cnt"></kbd></button>
+    </div>
+  </div>
+
+  <div class="bar find" id="findbar" role="search">
+    <span class="qw"><input id="q" class="q" placeholder="Search this PDF  ⌘F" aria-label="Search"><button class="qx" id="qx" title="Clear the search (Esc)" aria-label="Clear search">×</button></span>
+    <label class="tog" title="Also finds near misses, like Exampel for Example"><input type="checkbox" id="fz"> Typos OK</label>
+    <button class="chip" data-k="email">Emails</button>
+    <button class="chip" data-k="phone">Phones</button>
+    <button class="chip" data-k="card">Cards</button>
+    <button class="chip" data-k="ssn">SSN</button>
+    <button class="chip" data-k="date">Dates</button>
+    <button class="chip" data-k="money">Money</button>
+    <span class="count" id="count">Type to search</span>
+    <button id="fprev" class="ghost" aria-label="Previous match" disabled>‹</button>
+    <button id="fnext" class="ghost" aria-label="Next match" disabled>›</button>
+    <label class="tog" title="See the black boxes as they will be saved (P)"><input type="checkbox" id="blk"> Preview</label>
+    <button id="all" disabled>Redact all</button>
+  </div>
+  <div class="notice" id="notice" hidden>
+    <span id="ntext"></span>
+    <button id="read">Read scanned pages</button>
+    <span class="pr" id="prog" hidden><i></i></span><button class="ghost" id="stop" hidden>Stop</button>
+    <span class="sp"></span>
+    <button id="ndismiss" class="ghost nav" aria-label="Hide this bar" title="Hide this bar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="hint" id="hint"></div>
+  </div>
+  <div class="empty"><img class="logo" src="logo.svg" alt=""><div class="brand">pdfbud</div><div class="tag">Redact, edit, view, search and fill PDFs.</div><b>Drop a PDF here</b><span>or</span><button class="primary" id="open2">Open PDF…</button><small>Everything stays on your Mac.</small></div>
+
+  <div class="body">
+    <nav class="side" id="strip" aria-label="Pages"></nav>
+    <div class="stage" id="stage" tabindex="-1"><div class="col" id="col"></div></div>
+  </div>
+
+  <div id="sel" role="toolbar" aria-label="Selection">
+    <button id="sCopy" title="Copy the selected words (⌘C)">Copy <kbd>⌘C</kbd></button>
+    <button id="sCut" title="Black out the selected words and copy them (⌘X)">Cut: redact and copy <kbd>⌘X</kbd></button>
+    <button id="sRed" title="Black out the selected words">Redact</button>
+  </div>
+  <div id="toast">Full screen. Move the mouse to the top edge for the toolbar, the left edge for the pages. Esc leaves.</div>
+  <div class="foot"><span id="status">No changes yet</span><span id="fontnote" class="chipnote" hidden></span><span id="fieldnote" class="chipnote" hidden></span><span id="ocrnote" class="chipnote" hidden>Read by text recognition: check this page</span><button id="scanchip" class="chipnote" hidden title="Show the scanned pages bar again"></button><span>Original is never changed.</span><button id="path" class="path" aria-label="Show the file in Finder" hidden><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span id="ptext"></span></button></div>
+
+<script src="js/state.js"></script>
+<script src="js/overlays.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/scan.js"></script>
+<script src="js/search.js"></script>
+<script src="js/view.js"></script>
+<script src="js/select.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

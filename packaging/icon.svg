@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs><linearGradient id="tile" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#087CFF"/><stop offset="1" stop-color="#2935C9"/></linearGradient></defs><rect x="0" y="0" width="256" height="256" rx="58" fill="url(#tile)"/><g transform="translate(18 18) scale(.86)">
+<defs>
+ <linearGradient id="foldA" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#45B9FF"/><stop offset="1" stop-color="#087CFF"/>
+ </linearGradient>
+ <linearGradient id="foldB" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#087CFF"/><stop offset="1" stop-color="#2637D9"/>
+ </linearGradient>
+</defs>
+<!-- One folded sheet, reduced to a bold, memorable silhouette -->
+<path d="M55 35c0-12 10-22 22-22h66l58 58v57l-41 39-31-31 32-32-38-38H99v111l-44 35V35Z" fill="url(#foldA)"/>
+<path d="M55 212 129 138c7-7 18-7 25 0l46 45-37 37H55Z" fill="url(#foldB)"/>
+<path d="m151 139 49 44-37 37-47-45c-7-7-7-18 0-25l10-10c7-7 18-7 25-1Z" fill="#0B66F0" opacity=".18"/>
+</g></svg>
